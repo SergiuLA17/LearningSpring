@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="musicBan"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd"
+>
+
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean id="musicBeanClassic"
           class="com.example.learningspring.ClassicMusic">
     </bean>
+    <bean id="musicBeanRock"
+          class="com.example.learningspring.RockMusic">
+    </bean>
 
+    <bean id="musicBeanPop"
+          class="com.example.learningspring.PopMusic">
+    </bean>
     <bean id="musicPlayer"
           class="com.example.learningspring.PlayerMusic">
-        <property name="music" ref="musicBan"/>
-        <property name="name" value="Some name"/>
-        <property name="volume" value="55"/>
+        <property name="playerMusic">
+            <list>
+                <ref bean="musicBeanRock"/>
+                <ref bean="musicBeanPop"/>
+                <ref bean="musicBeanClassic"/>
+            </list>
+
+        </property>
     </bean>
 </beans>

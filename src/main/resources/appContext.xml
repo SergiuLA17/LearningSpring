@@ -10,14 +10,25 @@
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="musicBan"
+    <bean id="musicBeanClassic"
           class="com.example.learningspring.ClassicMusic">
+    </bean>
+    <bean id="musicBeanRock"
+          class="com.example.learningspring.RockMusic">
+    </bean>
+
+    <bean id="musicBeanPop"
+          class="com.example.learningspring.PopMusic">
     </bean>
     <bean id="musicPlayer"
           class="com.example.learningspring.PlayerMusic">
-        <property name="music" ref = "musicBan"/>
-        <property name="name" value="${playerMusic.name}"/>
-        <property name="volume" value="${playerMusic.volume}"/>
+        <property name="playerMusic">
+            <list>
+                <ref bean="musicBeanRock"/>
+                <ref bean="musicBeanPop"/>
+                <ref bean="musicBeanClassic"/>
+            </list>
 
+        </property>
     </bean>
 </beans>

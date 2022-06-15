@@ -21,14 +21,16 @@
           class="com.example.learningspring.PopMusic">
     </bean>
     <bean id="musicPlayer"
-          class="com.example.learningspring.PlayerMusic">
+          class="com.example.learningspring.PlayerMusic"
+          scope="prototype">
         <property name="playerMusic">
             <list>
                 <ref bean="musicBeanRock"/>
                 <ref bean="musicBeanPop"/>
                 <ref bean="musicBeanClassic"/>
             </list>
-
         </property>
+        <property name="volume" value="10"/>
+
     </bean>
 </beans>

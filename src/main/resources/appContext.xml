@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="musicBan"
+          class="com.example.learningspring.ClassicMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="com.example.learningspring.PlayerMusic">
+        <property name="music" ref="musicBan"/>
+        <property name="name" value="Some name"/>
+        <property name="volume" value="55"/>
+    </bean>
+</beans>

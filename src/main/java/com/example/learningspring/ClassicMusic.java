@@ -11,6 +11,7 @@ public class ClassicMusic implements Music {
     private ClassicMusic() {
     }
 
+
     public static ClassicMusic getClassicMusic() {
         return new ClassicMusic();
     }

@@ -1,16 +1,24 @@
 package com.example.learningspring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PlayerMusic {
-    List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
+    @Autowired
+    private ClassicMusic classicMusic;
+    @Autowired
+    private RockMusic rockMusic;
 
-    public void setPlayerMusic(List <Music> musicList) {
-        this.musicList = musicList;
-    }
+    @Value("${playerMusic.name}")
+    private String name;
+    @Value("${playerMusic.volume}")
+    private int volume;
 
     public String getName() {
         return name;
@@ -28,14 +36,13 @@ public class PlayerMusic {
         this.volume = volume;
     }
 
-    public PlayerMusic() {
-    }
+    //    public PlayerMusic(ClassicMusic classicMusic) {
+//        this.classicMusic = classicMusic;
+//        musicList.add(classicMusic);
+//    }
 
+    public String playMusic() {
+        return  name +" with volume: "+ volume ;
 
-    public void playMusic() {
-        for (Music music:
-             musicList) {
-            System.out.println("Now playing: " + music.getName() + " Time: " + music.getLength());
-        }
     }
 }

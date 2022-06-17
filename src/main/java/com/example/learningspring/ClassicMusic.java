@@ -1,20 +1,30 @@
 package com.example.learningspring;
 
-public class ClassicMusic implements Music {
-    private ClassicMusic(){
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+@Component("musicBeanClassic")
+public class ClassicMusic implements Music {
+    private ClassicMusic() {
     }
-    public  static ClassicMusic getClassicMusic(){
+
+    public static ClassicMusic getClassicMusic() {
         return new ClassicMusic();
     }
 
-    public void doMyInit(){
+    @PostConstruct
+    public void doMyInit() {
         System.out.println("Doing my initialization");
     }
 
-    public void doMyDestroy(){
+    @PreDestroy
+    public void doMyDestroy() {
         System.out.println("Doing my destroy");
     }
+
     @Override
     public String getName() {
         return "Bach";

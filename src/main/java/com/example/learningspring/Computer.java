@@ -16,8 +16,7 @@ public class Computer {
         this.playerMusic = playerMusic;
     }
 
-    @Override
-    public String toString() {
-        return "Computer: " + id + "\nPlaying " + playerMusic.playMusic();
+    public Music playMusic(MusicGenre musicGenre){
+        return playerMusic.playMusic(musicGenre);
     }
 }

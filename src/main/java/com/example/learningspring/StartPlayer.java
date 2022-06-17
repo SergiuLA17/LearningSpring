@@ -7,8 +7,9 @@ public class StartPlayer {
         try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
                 SpringConfig.class)) {
 
-            PlayerMusic playerMusic = context.getBean("playerMusic", PlayerMusic.class);
-            System.out.println(playerMusic.playMusic());
+
+            Computer computer = context.getBean("computer", Computer.class);
+            System.out.println("Now playing: " + computer.playMusic(MusicGenre.CLASSICAL));
 
         }
     }

@@ -1,18 +1,14 @@
 package com.example.learningspring;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class StartPlayer {
     public static void main(String[] args) {
-        try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml")) {
+        try (AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(
+                SpringConfig.class)) {
 
-//            PlayerMusic playerMusic = context.getBean("playerMusic", PlayerMusic.class);
-//            playerMusic.playMusic();
-
-            Computer computer = context.getBean("computer", Computer.class);
-
-            Computer compute2 = context.getBean("computer", Computer.class);
-            System.out.println(computer == compute2);
+            PlayerMusic playerMusic = context.getBean("playerMusic", PlayerMusic.class);
+            System.out.println(playerMusic.playMusic());
 
         }
     }

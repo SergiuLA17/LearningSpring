@@ -31,11 +31,15 @@ public class PlayerMusic {
     public PlayerMusic() {
     }
 
+    public void addMusicToPlayerMusic(Music music) {
+        musicList.add(music);
+    }
 
     public void playMusic() {
         for (Music music:
              musicList) {
             System.out.println("Now playing: " + music.getName() + " Time: " + music.getLength());
+
         }
     }
 }

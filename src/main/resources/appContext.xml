@@ -10,31 +10,8 @@
 
     <context:property-placeholder location="classpath:application.properties"/>
 
-    <bean id="musicBeanClassic"
-          class="com.example.learningspring.ClassicMusic"
-          init-method="doMyInit"
-          destroy-method="doMyDestroy"
-          scope="prototype"
-          factory-method="getClassicMusic">
+    <context:component-scan base-package="com.example.learningspring"/>
 
-    </bean>
-    <!--    <bean id="musicBeanRock"-->
-    <!--          class="com.example.learningspring.RockMusic">-->
-    <!--    </bean>-->
 
-    <!--    <bean id="musicBeanPop"-->
-    <!--          class="com.example.learningspring.PopMusic">-->
-    <!--    </bean>-->
-    <!--    <bean id="musicPlayer"-->
-    <!--          class="com.example.learningspring.PlayerMusic"-->
-    <!--          scope="prototype">-->
-    <!--        <property name="playerMusic">-->
-    <!--            <list>-->
-    <!--                <ref bean="musicBeanRock"/>-->
-    <!--                <ref bean="musicBeanPop"/>-->
-    <!--                <ref bean="musicBeanClassic"/>-->
-    <!--            </list>-->
-    <!--        </property>-->
-    <!--        <property name="volume" value="10"/>-->
-    <!--    </bean>-->
+
 </beans>

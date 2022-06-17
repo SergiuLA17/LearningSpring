@@ -10,7 +10,9 @@ public class StartPlayer {
 //            playerMusic.playMusic();
 
             Computer computer = context.getBean("computer", Computer.class);
-            System.out.println(computer);
+
+            Computer compute2 = context.getBean("computer", Computer.class);
+            System.out.println(computer == compute2);
 
         }
     }

@@ -1,45 +1,30 @@
 package com.example.learningspring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PlayerMusic {
-    List<Music> musicList = new ArrayList<>();
-    private String name;
-    private int volume;
+    static List<Music> musicList = new ArrayList<>();
+    @Autowired
+    private ClassicMusic classicMusic;
+    @Autowired
+    private RockMusic rockMusic;
 
-    public void setPlayerMusic(List <Music> musicList) {
+    public void setPlayerMusic(List<Music> musicList) {
         this.musicList = musicList;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public PlayerMusic(ClassicMusic classicMusic) {
+//        this.classicMusic = classicMusic;
+//        musicList.add(classicMusic);
+//    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String playMusic() {
+        return  classicMusic.getName() +" and "+ rockMusic.getName() ;
 
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public PlayerMusic() {
-    }
-
-    public void addMusicToPlayerMusic(Music music) {
-        musicList.add(music);
-    }
-
-    public void playMusic() {
-        for (Music music:
-             musicList) {
-            System.out.println("Now playing: " + music.getName() + " Time: " + music.getLength());
-
-        }
     }
 }

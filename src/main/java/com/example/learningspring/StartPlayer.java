@@ -6,12 +6,12 @@ public class StartPlayer {
     public static void main(String[] args) {
         try (ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("appContext.xml")) {
 
-            PlayerMusic playerMusic = new PlayerMusic();
-            playerMusic.addMusicToPlayerMusic( context.getBean("musicBeanClassic", ClassicMusic.class));
-            playerMusic.addMusicToPlayerMusic( context.getBean("musicBeanRock", RockMusic.class));
-            playerMusic.addMusicToPlayerMusic( context.getBean("musicBeanPop", PopMusic.class));
+//            PlayerMusic playerMusic = context.getBean("playerMusic", PlayerMusic.class);
+//            playerMusic.playMusic();
 
-            playerMusic.playMusic();
+            Computer computer = context.getBean("computer", Computer.class);
+            System.out.println(computer);
+
         }
     }
 }

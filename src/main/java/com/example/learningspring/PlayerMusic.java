@@ -1,6 +1,7 @@
 package com.example.learningspring;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -8,23 +9,39 @@ import java.util.List;
 
 @Component
 public class PlayerMusic {
-    static List<Music> musicList = new ArrayList<>();
     @Autowired
     private ClassicMusic classicMusic;
     @Autowired
     private RockMusic rockMusic;
 
-    public void setPlayerMusic(List<Music> musicList) {
-        this.musicList = musicList;
+    @Value("${playerMusic.name}")
+    private String name;
+    @Value("${playerMusic.volume}")
+    private int volume;
+
+    public String getName() {
+        return name;
     }
 
-//    public PlayerMusic(ClassicMusic classicMusic) {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getVolume() {
+        return volume;
+    }
+
+    public void setVolume(int volume) {
+        this.volume = volume;
+    }
+
+    //    public PlayerMusic(ClassicMusic classicMusic) {
 //        this.classicMusic = classicMusic;
 //        musicList.add(classicMusic);
 //    }
 
     public String playMusic() {
-        return  classicMusic.getName() +" and "+ rockMusic.getName() ;
+        return  name +" with volume: "+ volume ;
 
     }
 }

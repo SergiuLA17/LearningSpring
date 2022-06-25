@@ -1,17 +1,19 @@
 package com.example.learningspring;
 
-import org.springframework.stereotype.Component;
+public class RockMusic  implements Music{
+    String rockMusic;
 
-@Component("musicBeanRock")
-public class RockMusic implements Music{
-
-    @Override
-    public String getName() {
-        return "More 5";
+    public RockMusic(String rockMusic ){
+        this.rockMusic = rockMusic;
     }
 
     @Override
-    public String getLength() {
-        return "4:33 sec";
+    public String getMusic() {
+        return rockMusic;
+    }
+
+    @Override
+    public String toString() {
+        return rockMusic;
     }
 }

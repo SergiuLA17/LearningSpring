@@ -1,48 +1,21 @@
 package com.example.learningspring;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class PlayerMusic {
-    @Autowired
-    private ClassicMusic classicMusic;
-    @Autowired
-    private RockMusic rockMusic;
+    List<RockMusic> musicRockList = ListOfRockMusic.rockMusics;
+    List<ClassicMusic> classicMusics = ListOfClassicMusic.classicMusics;
+    List<PopMusic> popMusics = ListOfPopMusic.popMusics;
 
-    @Value("${playerMusic.name}")
-    private String name;
-    @Value("${playerMusic.volume}")
-    private int volume;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getVolume() {
-        return volume;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    //    public PlayerMusic(ClassicMusic classicMusic) {
-//        this.classicMusic = classicMusic;
-//        musicList.add(classicMusic);
-//    }
-
-    public String playMusic() {
-        return  name +" with volume: "+ volume ;
-
+    public Music playMusic(MusicGenre musicGenre) {
+        if (musicGenre == MusicGenre.CLASSICAL) {
+            return classicMusics.get(new Random().nextInt(0, 2));
+        } else if (musicGenre == MusicGenre.POP) {
+            return popMusics.get(new Random().nextInt(0, 2));
+        } else
+            return musicRockList.get(new Random().nextInt(0, 2));
     }
 }
